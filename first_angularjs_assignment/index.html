@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="js/app.js"></script>
+        
+        <style>
+          .btn-danger{
+                -webkit-border-radius: 50px;
+                -moz-border-radius: 50px;
+                border-radius: 50px;
+          }
+          .add-btn,.save-btn{
+            width:100%;
+          }
+        </style>
+    </head>
+
+    <body ng-app="myApp">
+    <div ng-controller='myController'>
+        <form class="form-horizontal" ng-hide="showMe">
+          
+        
+          <fieldset>
+          <!-- Form Name -->
+          <legend>First AngularJS Assignment !</legend>
+
+          <!-- Text input-->
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for="firstname">First Name</label>  
+                  <div class="col-md-4">
+                  <input id="firstname" name="firstname" type="text" placeholder="" class="form-control input-md" ng-model='firstName'>
+                    
+                  </div>
+                </div>
+
+                <!-- Text input-->
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for="lastname">Last Name</label>  
+                  <div class="col-md-4">
+                  <input id="lastname" name="lastname" type="text" placeholder="" class="form-control input-md" ng-model='lastName'>
+                    
+                  </div>
+                </div>
+
+                <!-- Discription Textarea -->
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for="discription">Discription</label>
+                  <div class="col-md-4">                     
+                    <textarea class="form-control" id="discription" name="discription" ng-model='discription'></textarea>
+                  </div>
+                </div>
+
+                <!-- Hobby input-->
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for="hobbies">Add Hobbie</label>  
+                  <div class="col-md-4">
+                  <input id="hobbies" name="hobbies" type="text" placeholder="Listen Music" class="form-control input-md" ng-model='newHobby'>
+                  </div>
+                <br><br><p class='btn-danger' style="text-align:center">{{errortext}}</p>
+                </div>
+
+
+                <!-- ADD Button -->
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for="add"></label>
+                  <div class="col-md-4">
+                    <button id="add" name="add" class="btn btn-info add-btn" ng-click="addHobby()">Add</button>
+                  
+                  <ul >
+                    <br><li ng-repeat="x in Hobbies" ng-model="hobbiesList" style="list-style-type:none;"><span ng-click="removeHobby($index)"><a class="btn btn-danger">X</a></span>  {{x}}</li>
+                  </ul>
+                  </div>
+                </div>
+
+                <!-- SAVE Button -->
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for="save"></label>
+                  <div class="col-md-4">
+                    <button id="save" name="save" class="btn btn-primary save-btn"  ng-click='yourDetails(firstName, lastName, discription,Hobbies)'>SAVE</button>
+
+
+                    <br>{{firstname}}<br>
+                    {{lastname}}<br>
+                    {{discrip}}<br>
+                    {{hobbies}}
+                  </div>
+                </div>
+
+          </fieldset>
+        </form>
+</div>
+    </body>
+</html>
